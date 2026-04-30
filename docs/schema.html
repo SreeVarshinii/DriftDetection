@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Living Data Map</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #fafafa; }
+        #mynetwork { width: 100vw; height: 100vh; border: none; }
+        #summary {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            z-index: 1000;
+        }
+        h3 { margin-top: 0; color: #333; }
+        p { margin: 8px 0; color: #555; font-size: 14px; }
+        strong { color: #111; }
+    </style>
+</head>
+<body>
+    <div id="summary">
+        <h3>Dark Data Dashboard</h3>
+        <p><strong>Tables:</strong> 7</p>
+        <p><strong>Total Columns:</strong> 57</p>
+        <p><strong>Last Update:</strong> 2026-04-30 16:55</p>
+    </div>
+    <div id="mynetwork"></div>
+
+    <script type="text/javascript">
+        var nodes = new vis.DataSet([{"id": "olist_orders_dataset.csv", "label": "RAW DATA\nolist_orders_dataset.csv", "collapsed_label": "RAW DATA\nolist_orders_dataset.csv", "expanded_label": "RAW DATA\nolist_orders_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "olist_customers_dataset.csv", "label": "RAW DATA\nolist_customers_dataset.csv", "collapsed_label": "RAW DATA\nolist_customers_dataset.csv", "expanded_label": "RAW DATA\nolist_customers_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "olist_order_items_dataset.csv", "label": "RAW DATA\nolist_order_items_dataset.csv", "collapsed_label": "RAW DATA\nolist_order_items_dataset.csv", "expanded_label": "RAW DATA\nolist_order_items_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "olist_order_payments_dataset.csv", "label": "RAW DATA\nolist_order_payments_dataset.csv", "collapsed_label": "RAW DATA\nolist_order_payments_dataset.csv", "expanded_label": "RAW DATA\nolist_order_payments_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "olist_order_reviews_dataset.csv", "label": "RAW DATA\nolist_order_reviews_dataset.csv", "collapsed_label": "RAW DATA\nolist_order_reviews_dataset.csv", "expanded_label": "RAW DATA\nolist_order_reviews_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "olist_geolocation_dataset.csv", "label": "RAW DATA\nolist_geolocation_dataset.csv", "collapsed_label": "RAW DATA\nolist_geolocation_dataset.csv", "expanded_label": "RAW DATA\nolist_geolocation_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "olist_products_dataset.csv", "label": "RAW DATA\nolist_products_dataset.csv", "collapsed_label": "RAW DATA\nolist_products_dataset.csv", "expanded_label": "RAW DATA\nolist_products_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "olist_sellers_dataset.csv", "label": "RAW DATA\nolist_sellers_dataset.csv", "collapsed_label": "RAW DATA\nolist_sellers_dataset.csv", "expanded_label": "RAW DATA\nolist_sellers_dataset.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "product_category_name_translation.csv", "label": "RAW DATA\nproduct_category_name_translation.csv", "collapsed_label": "RAW DATA\nproduct_category_name_translation.csv", "expanded_label": "RAW DATA\nproduct_category_name_translation.csv", "shape": "box", "color": {"border": "#4a4a4a", "background": "#e8e8e8"}, "level": 0, "font": {"face": "monospace", "align": "center"}}, {"id": "bronze.customers", "label": "bronze.customers\n8 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "collapsed_label": "bronze.customers\n8 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "expanded_label": "bronze.customers\n8 columns\nLast change: 2026-04-30 16:55\n\u25b2 click to collapse\n  customer_id               varchar\n  customer_state            varchar\n  customer_city             varchar\n  emitted_at                timestamp\n  schema_version            integer\n  _rescued_data             jsonb\n  _ingested_at              timestamp\n  _schema_version           integer", "shape": "box", "color": {"border": "#cd7f32", "background": "#ffe6cc"}, "level": 1, "font": {"face": "monospace", "align": "left", "color": "black"}}, {"id": "bronze.items", "label": "\ud83d\uded1 DRIFT DETECTED\nbronze.items\n9 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "collapsed_label": "\ud83d\uded1 DRIFT DETECTED\nbronze.items\n9 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "expanded_label": "\ud83d\uded1 DRIFT DETECTED\nbronze.items\n9 columns\nLast change: 2026-04-30 16:55\n\u25b2 click to collapse\n  order_item_id             varchar\n  order_id                  varchar\n  price                     numeric\n  freight_value             numeric\n  emitted_at                timestamp\n  schema_version            integer\n  _rescued_data             jsonb\n  _ingested_at              timestamp\n  _schema_version           integer", "shape": "box", "color": {"border": "#cc0000", "background": "#ffe6cc", "highlight": {"border": "#cc0000"}}, "level": 1, "font": {"face": "monospace", "align": "left", "color": "#cc0000"}}, {"id": "bronze.orders", "label": "\ud83d\uded1 DRIFT DETECTED\nbronze.orders\n8 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "collapsed_label": "\ud83d\uded1 DRIFT DETECTED\nbronze.orders\n8 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "expanded_label": "\ud83d\uded1 DRIFT DETECTED\nbronze.orders\n8 columns\nLast change: 2026-04-30 16:55\n\u25b2 click to collapse\n  order_id                  varchar\n  customer_id               varchar\n  order_status              varchar\n  emitted_at                timestamp\n  schema_version            integer\n  _rescued_data             jsonb\n  _ingested_at              timestamp\n  _schema_version           integer", "shape": "box", "color": {"border": "#cc0000", "background": "#ffe6cc", "highlight": {"border": "#cc0000"}}, "level": 1, "font": {"face": "monospace", "align": "left", "color": "#cc0000"}}, {"id": "bronze.payments", "label": "bronze.payments\n9 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "collapsed_label": "bronze.payments\n9 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "expanded_label": "bronze.payments\n9 columns\nLast change: 2026-04-30 16:55\n\u25b2 click to collapse\n  payment_id                varchar\n  order_id                  varchar\n  payment_type              varchar\n  payment_installments      integer\n  emitted_at                timestamp\n  schema_version            integer\n  _rescued_data             jsonb\n  _ingested_at              timestamp\n  _schema_version           integer", "shape": "box", "color": {"border": "#cd7f32", "background": "#ffe6cc"}, "level": 1, "font": {"face": "monospace", "align": "left", "color": "black"}}, {"id": "gold.loyalty_tier_metrics", "label": "\u26a0\ufe0f AFFECTED BY DRIFT\ngold.loyalty_tier_metrics\n3 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "collapsed_label": "\u26a0\ufe0f AFFECTED BY DRIFT\ngold.loyalty_tier_metrics\n3 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "expanded_label": "\u26a0\ufe0f AFFECTED BY DRIFT\ngold.loyalty_tier_metrics\n3 columns\nLast change: 2026-04-30 16:55\n\u25b2 click to collapse\n  tier                      varchar\n  order_count               bigint\n  total_revenue             numeric", "shape": "box", "color": {"border": "#cc6600", "background": "#fffacd", "highlight": {"border": "#cc6600"}}, "level": 3, "font": {"face": "monospace", "align": "left", "color": "#cc6600"}}, {"id": "gold.state_revenue_features", "label": "\u26a0\ufe0f AFFECTED BY DRIFT\ngold.state_revenue_features\n6 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "collapsed_label": "\u26a0\ufe0f AFFECTED BY DRIFT\ngold.state_revenue_features\n6 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "expanded_label": "\u26a0\ufe0f AFFECTED BY DRIFT\ngold.state_revenue_features\n6 columns\nLast change: 2026-04-30 16:55\n\u25b2 click to collapse\n  customer_state            varchar\n  total_orders              bigint\n  total_revenue             numeric\n  avg_order_value           numeric\n  suspicious_burst_count    bigint\n  latest_activity_at        timestamp", "shape": "box", "color": {"border": "#cc6600", "background": "#fffacd", "highlight": {"border": "#cc6600"}}, "level": 3, "font": {"face": "monospace", "align": "left", "color": "#cc6600"}}, {"id": "silver.cleaned_orders", "label": "\u26a0\ufe0f AFFECTED BY DRIFT\nsilver.cleaned_orders\n14 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "collapsed_label": "\u26a0\ufe0f AFFECTED BY DRIFT\nsilver.cleaned_orders\n14 columns\nLast change: 2026-04-30 16:55\n\u25bc click to expand", "expanded_label": "\u26a0\ufe0f AFFECTED BY DRIFT\nsilver.cleaned_orders\n14 columns\nLast change: 2026-04-30 16:55\n\u25b2 click to collapse\n  order_id                  varchar\n  customer_state            varchar\n  customer_city             varchar\n  order_status              varchar\n  item_count                bigint\n  total_value               numeric\n  freight_value             numeric\n  payment_type              text\n  payment_installments      integer\n  event_timestamp           timestamp\n  loyalty_tier              varchar\n  is_burst_event            boolean\n  schema_version            integer\n  _ingested_at              timestamp", "shape": "box", "color": {"border": "#cc6600", "background": "#f0f0f0", "highlight": {"border": "#cc6600"}}, "level": 2, "font": {"face": "monospace", "align": "left", "color": "#cc6600"}}]);
+        var edges = new vis.DataSet([{"from": "olist_orders_dataset.csv", "to": "bronze.orders", "arrows": "to", "color": {"color": "red", "opacity": 0.8}, "dashes": true, "width": 2}, {"from": "olist_customers_dataset.csv", "to": "bronze.customers", "arrows": "to", "color": {"color": "#999", "opacity": 0.6}, "dashes": true, "width": 1}, {"from": "olist_order_items_dataset.csv", "to": "bronze.items", "arrows": "to", "color": {"color": "red", "opacity": 0.8}, "dashes": true, "width": 2}, {"from": "olist_order_payments_dataset.csv", "to": "bronze.payments", "arrows": "to", "color": {"color": "#999", "opacity": 0.6}, "dashes": true, "width": 1}, {"from": "bronze.payments", "to": "silver.cleaned_orders", "arrows": "to", "color": {"color": "#666"}, "width": 2}, {"from": "bronze.orders", "to": "silver.cleaned_orders", "arrows": "to", "color": {"color": "red"}, "width": 3}, {"from": "bronze.items", "to": "silver.cleaned_orders", "arrows": "to", "color": {"color": "red"}, "width": 3}, {"from": "bronze.customers", "to": "silver.cleaned_orders", "arrows": "to", "color": {"color": "#666"}, "width": 2}, {"from": "silver.cleaned_orders", "to": "gold.state_revenue_features", "arrows": "to", "color": {"color": "red"}, "width": 3}, {"from": "silver.cleaned_orders", "to": "gold.loyalty_tier_metrics", "arrows": "to", "color": {"color": "red"}, "width": 3}]);
+
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+            nodes: {
+                margin: 15,
+                borderWidth: 2,
+                shadow: true
+            },
+            edges: {
+                smooth: { type: 'cubicBezier', forceDirection: 'vertical', roundness: 0.4 },
+                width: 2
+            },
+            layout: {
+                hierarchical: {
+                    direction: 'UD',
+                    sortMethod: 'directed',
+                    nodeSpacing: 350,
+                    levelSeparation: 250
+                }
+            },
+            physics: false
+        };
+        var network = new vis.Network(container, data, options);
+
+        // Toggle expand/collapse on click
+        network.on("click", function(params) {
+            if (params.nodes.length > 0) {
+                var nodeId = params.nodes[0];
+                var node = nodes.get(nodeId);
+                
+                if (node.label === node.collapsed_label) {
+                    nodes.update({id: nodeId, label: node.expanded_label});
+                } else {
+                    nodes.update({id: nodeId, label: node.collapsed_label});
+                }
+            }
+        });
+    </script>
+</body>
+</html>
