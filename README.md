@@ -1,8 +1,10 @@
-# 🌊 SchemaDrift: Resilient Data Pipeline
+# SchemaDrift: Resilient Data Pipeline
+[Read More About It Here](https://sreevarshinii.substack.com/p/dark-data-and-silent-breaks-the-data)
+
 
 A real-time, event-driven data pipeline that simulates real-world e-commerce data streams (using the Olist dataset), actively monitors for unexpected **schema drift**, and auto-rescues mutated data directly into a dynamic PostgreSQL architecture.
 
-## 🏗️ Architecture
+## Architecture
 1. **The Simulator (`simulator.py`)**: Replays historical Olist data. Emits 4 normalized entity events (`orders`, `items`, `customers`, `payments`) with controlled delays, bursts, and chaotic schema mutations (dropped columns, renamed columns, new fields).
 2. **The Watcher (`watcher.py`)**: A `watchdog` daemon that intercepts incoming JSON events. It infers the schema on-the-fly, computes MD5 hashes, compares them against a local `schema_registry.json`, and logs schema evolution metadata.
 3. **The Data Lakehouse (PostgreSQL)**:
@@ -13,7 +15,7 @@ A real-time, event-driven data pipeline that simulates real-world e-commerce dat
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Start the Database
 The pipeline requires a PostgreSQL instance. A `docker-compose.yml` is provided to spin up Postgres and pgAdmin.
@@ -48,7 +50,7 @@ python simulator.py --mode schema_mutation --limit 25
 
 ---
 
-## 🗺️ The Living Data Map
+## The Living Data Map
 
 ![Living Data Map tracking Schema Drift](./image.png)
 
@@ -60,7 +62,7 @@ This automatically parses your database, checks the drift registry, and opens `d
 
 ---
 
-## 📊 Accessing the Data
+## Accessing the Data
 You can query the pipeline directly from your terminal:
 ```bash
 docker exec -it olist_postgres psql -U postgres -d olist_db
