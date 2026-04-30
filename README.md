@@ -49,6 +49,9 @@ python simulator.py --mode schema_mutation --limit 25
 ---
 
 ## 🗺️ The Living Data Map
+
+![Living Data Map tracking Schema Drift](./image.png)
+
 Once you've run the simulator and triggered a schema mutation, generate the dynamic lineage map:
 ```bash
 python schema_viz.py
