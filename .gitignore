@@ -1,0 +1,11 @@
+.venv/
+data/
+data_parquet/
+watch/
+reports/
+__pycache__/
+*.pyc
+.DS_Store
+docs/
+schema_registry.json
+data_live/
